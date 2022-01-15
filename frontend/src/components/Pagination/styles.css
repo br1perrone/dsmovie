@@ -1,0 +1,54 @@
+.dsmovie-pagination-container {
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dsmovie-pagination-box {
+    width: 180px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dsmovie-pagination-box form {
+    width: 100%;
+    display: flex;
+}
+
+.dsmovie-pagination-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--background-primary);
+    cursor: pointer;
+}
+
+/* https://www.ti-enxame.com/pt/css/como-calcular-o-hue-rotate-necessario-para-gerar-cores-especificas/1052692687/ */
+.dsmovie-pagination-button svg {
+    filter: invert(25%) sepia() saturate(100000%) hue-rotate(174deg);
+}
+
+.dsmovie-pagination-button:disabled {
+    border: 1px solid var(--disabled);
+    cursor: unset;
+}
+
+.dsmovie-pagination-button:disabled svg {
+    filter: none;
+}
+
+.dsmovie-pagination-container p {
+    margin: 0;
+    font-size: 12px;
+    color: var(--background-primary);
+}
+
+.dsmovie-flip-horizontal {
+    transform: rotate(180deg);
+}
