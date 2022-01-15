@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "./styles.css"
 
 function Movie() {
@@ -20,9 +21,9 @@ function Movie() {
                 <form className="dsmovie-form">
                     <div className="form-group dsmovie-form-group">
                         <label htmlFor="email">Informe seu email</label>
-                        <input type="email" 
-                        placeholder='seu-email@example.com'
-                        className="form-control" id="email" />
+                        <input type="email"
+                            placeholder='seu-email@example.com'
+                            className="form-control" id="email" />
                     </div>
                     <div className="form-group dsmovie-form-group">
                         <label htmlFor="score">Informe sua avaliação</label>
@@ -38,7 +39,9 @@ function Movie() {
                         <button type="submit" className="btn btn-success dsmovie-btn">Salvar</button>
                     </div>
                 </form >
-                <button className="btn btn-success dsmovie-btn mt-3">Cancelar</button>
+                <Link to="/">
+                    <button className="btn btn-success dsmovie-btn mt-3">Cancelar</button>
+                </Link>
             </div >
         </div >
     )
