@@ -1,17 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 :root {
-  --background-primary: #4dc041;
-  --color-primary: #ffffff;
+  --background-primary: #255a1f;
+  --color-primary: #fff;
 
   --backgound: #e8e8e8;
-  --color: #000000;
+  --color: #000;
 }
 
 * {
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
-    color: var(--color);
+    margin: 0;
+    padding: 0;
 }
 
 html, body {
