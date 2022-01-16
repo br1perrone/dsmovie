@@ -23,15 +23,17 @@ function List() {
         api.get(`/movies?size=${size}&page=${pageNumber}&sort=${sort}`)
             .then(response => {
                 const data = response.data as MoviePage;
-                console.log(data);
                 setPage(data);
-                setPageNumber(page.number)
             });
     }, [pageNumber, size]);
 
-    // <Pagination />
+    const handlePageChange = (newPageNumber :number) => {
+        setPageNumber(newPageNumber)
+    }
+
     return (
         <>
+            <Pagination onChange={handlePageChange} page={page}/>
 
             <div className="container">
                 <div className="row">
