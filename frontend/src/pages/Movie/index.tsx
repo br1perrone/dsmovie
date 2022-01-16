@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import "./styles.css"
 
-function Movie() {
+function Movie({movieId}: {movieId?: number}) {
     // w300_and_h450_bestv2 Landscape
     // w533_and_h300_bestv2 Portrait
     const movie = {

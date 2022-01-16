@@ -1,3 +1,5 @@
+export type SortMovie = 'id' | 'title' | 'score' | 'count';
+
 /** tipo para filme */
 export type Movie = {
     /** identificador */
