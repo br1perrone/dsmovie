@@ -26,8 +26,8 @@ function getFills(score: number) {
 }
 
 function Star({fill} : {fill: number}) {
-    if (fill == 0) return <StarEmptySvg />;
-    if (fill == 1) return <StarFullSvg />;
+    if (fill === 0) return <StarEmptySvg />;
+    if (fill === 1) return <StarFullSvg />;
     return <StarHalfSvg />;
 }
 

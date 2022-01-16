@@ -8,8 +8,10 @@ import { MoviePage, SortMovie } from 'utils/types';
 
 function List() {
     const [pageNumber, setPageNumber] = useState(0);
-    const [sort, setSort] = useState<SortMovie>('id');
-    const [size, setSize] = useState(12);
+    const [sort] = useState<SortMovie>('id');
+    //const [sort, setSort] = useState<SortMovie>('id');
+    const [size] = useState(12);
+    //const [size, setSize] = useState(12);
     const [page, setPage] = useState<MoviePage>({
         content: [],
         empty: true, last: true, first: true,
@@ -25,7 +27,10 @@ function List() {
                 const data = response.data as MoviePage;
                 setPage(data);
             });
-    }, [pageNumber, size]);
+    }, [
+        size, sort,
+        pageNumber
+    ]);
 
     const handlePageChange = (newPageNumber :number) => {
         setPageNumber(newPageNumber)
