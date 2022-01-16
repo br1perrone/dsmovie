@@ -20,7 +20,7 @@ public class MovieDTO {
 		this.count = count;
 		this.image = image;
 	}
-	
+
 	public MovieDTO(Movie movie) {
 		id = movie.getId();
 		title = movie.getTitle();
