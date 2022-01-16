@@ -29,9 +29,9 @@ function List() {
             });
     }, [pageNumber, size]);
 
+    // <Pagination />
     return (
         <>
-            <Pagination />
 
             <div className="container">
                 <div className="row">
