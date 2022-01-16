@@ -11,7 +11,7 @@
 	<artifactId>dsmovie</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>dsmovie</name>
-	<description>Projeto do Curso de Sprint React da DevSuperior realizado de 10 a 16 de janeiro de 2022</description>
+	<description>Projeto do Curso de Sprint React da DevSuperior</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
