@@ -2,12 +2,12 @@
 Front-end do projeto, desenvolvido em ReactJS
 
 ## Técnicas Utilizadas
-[x] React Router DOM
-[x] Axios
+- [x] React Router DOM
+- [x] Axios
 
 ### Acrescentadas na v2
-[x] ContextAPI
-[x] Dark mode
+- [x] ContextAPI
+- [x] Dark mode
 
 ## Instalação
 
