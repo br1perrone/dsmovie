@@ -1,48 +1,50 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import "./styles.css"
 
 import Pagination from 'components/Pagination';
 import MovieCard from 'components/MovieCard';
 import { api } from 'utils/constants';
-import { MoviePage, SortMovie } from 'utils/types';
+import { Movie, SortMovie } from 'utils/types';
+import { useAppContext } from 'contexts/Context';
+import { PageType } from 'reducers/PageReducer';
 
 function List() {
-    const [pageNumber, setPageNumber] = useState(0);
+    const [session, dispatch] = useAppContext()
+
+    const [pageNumber, setPageNumber] = useState(session.page.number);
     const [sort] = useState<SortMovie>('id');
     //const [sort, setSort] = useState<SortMovie>('id');
     const [size] = useState(12);
     //const [size, setSize] = useState(12);
-    const [page, setPage] = useState<MoviePage>({
-        content: [],
-        empty: true, last: true, first: true,
-        size, number: pageNumber,
-        numberOfElements: 0,
-        totalElements: 0,
-        totalPages: 0
-    });
+    const [page, setPage] = useState<PageType>(session.page);
 
     useEffect(() => {
         api.get(`/movies?size=${size}&page=${pageNumber}&sort=${sort}`)
             .then(response => {
-                const data = response.data as MoviePage;
+                const data = response.data as PageType;
                 setPage(data);
+                console.log('List.useEffect[pageNumber]', data);
+            })
+            .catch((err)=>{
+                console.error('List.useEffect[pageNumber]', err);
             });
     }, [
         size, sort,
         pageNumber
     ]);
 
-    const handlePageChange = (newPageNumber :number) => {
-        setPageNumber(newPageNumber)
-    }
+    useEffect(()=>{
+        console.log('List.useEffect[page]', page);
+        dispatch({type: 'SET_PAGE', payload: page as PageType});
+    }, [page, dispatch]);
 
     return (
         <>
-            <Pagination onChange={handlePageChange} page={page}/>
+            <Pagination />
 
             <div className="container">
                 <div className="row">
-                    {page?.content?.map((movie) =>
+                    {page?.content?.map((movie: Movie) =>
                         <div key={movie.id} className="col-sm-6 col-lg-4 col-xl-3 mb-4">
                             <MovieCard movie={movie} />
                         </div>

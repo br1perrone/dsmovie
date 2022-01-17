@@ -1,13 +1,16 @@
 import axios, { AxiosRequestConfig } from 'axios';
+import { useAppContext } from 'contexts/Context';
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { api, BASE_URL } from 'utils/constants';
 import { Movie } from 'utils/types';
 import { validateEmail } from 'utils/validators';
 import "./styles.css"
 
 function MovieGreet({ movieId }: { movieId: string }) {
-    const [movie, setMovie] = useState<Movie>()
+    const [{user}, dispatch] = useAppContext();
+    const [email, setEmail] = useState(user.email);
+    const [movie, setMovie] = useState<Movie>();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -16,6 +19,8 @@ function MovieGreet({ movieId }: { movieId: string }) {
                 setMovie(response.data as Movie)
             });
     }, [movieId]);
+
+    const goBack = () => navigate(-1);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -36,7 +41,10 @@ function MovieGreet({ movieId }: { movieId: string }) {
             }
         }
         axios(config).then((response) => {
-            navigate("/");
+            dispatch({type: 'SET_EMAIL', payload: {email} });
+            goBack();
+        }).catch((err)=> {
+            console.error("MovieGreet.handleSubmit", err);
         });
     }
 
@@ -49,7 +57,9 @@ function MovieGreet({ movieId }: { movieId: string }) {
                     <div className="form-group dsmovie-form-group">
                         <label htmlFor="email">Informe seu email</label>
                         <input type="email"
-                            placeholder='seu-email@example.com'
+                            placeholder='Informe seu-email@example.com.br'
+                            value={email}
+                            onChange={(e)=>setEmail(e.target.value)}
                             className="form-control" id="email" />
                     </div>
                     <div className="form-group dsmovie-form-group">
@@ -66,9 +76,7 @@ function MovieGreet({ movieId }: { movieId: string }) {
                         <button type="submit" className="btn btn-success dsmovie-btn">Salvar</button>
                     </div>
                 </form >
-                <Link to="/">
-                    <button className="btn btn-success dsmovie-btn mt-3">Cancelar</button>
-                </Link>
+                <button className="btn btn-success dsmovie-btn mt-3" onClick={goBack}>Cancelar</button>
             </div >
         </div >
     )

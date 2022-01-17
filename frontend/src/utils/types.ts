@@ -47,3 +47,7 @@ export type MoviePage = {
     /** se esta página está vazia */
     empty: boolean;
 }
+
+export type ActionType = {
+    type: string;
+}

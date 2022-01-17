@@ -1,0 +1,111 @@
+:root {
+  --toggle-button: #fff;
+  --toggle-back: #ddd;
+  --toggle-active: #fff;
+  --toggle-back-focus: #0f0;
+  --toggle-border: #555;
+}
+[data-theme='dark'] {
+  --toggle-button: #555;
+  --toggle-back: #999;
+  --toggle-active: #000;
+  --toggle-back-focus: #000;
+  --toggle-border: #555;
+}
+/*
+60px
+34px
+26px
+4px
+
+80px
+48px
+32px
+8px
+
+40px
+22px
+18px
+2px
+*/
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin: 10px;
+}
+.switch.lg { width: 80px; height: 48px; }
+.switch.sm { width: 40px; height: 22px; }
+  
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-color: #ccc;*/
+  background-color: var(--toggle-back);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+/* The button */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--toggle-button);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+/*
+.slide.lg:before.lg {height: 36px; width:36px; left:8px; bottom:8px;}
+.slide.sm:before.sm {height: 18px; width:18px; left:2px; bottom:2px;}
+*/
+
+input:checked + .slider {
+  background-color: var(--toggle-active);
+}
+  
+input:focus + .slider {
+  background-color: var(--toggle-back-focus);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+input:checked + .slider:before .lg{
+  -webkit-transform: translateX(36px);
+  -ms-transform: translateX(36px);
+  transform: translateX(36px);
+}
+input:checked + .slider:before .sm{
+  -webkit-transform: translateX(18px);
+  -ms-transform: translateX(18px);
+  transform: translateX(18px);
+}
+  
+/* Rounded sliders */
+.slider.round {
+  border-radius: 40px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}

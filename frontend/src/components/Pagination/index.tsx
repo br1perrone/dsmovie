@@ -1,17 +1,23 @@
 import { ReactComponent as ArrowSvg } from "assets/svg/arrow.svg";
-import { MoviePage } from "utils/types";
+import { useAppContext } from "contexts/Context";
+import { PageType } from "reducers/PageReducer";
 import "./styles.css";
 
-type Props = {
-    page: MoviePage;
-    onChange: Function;
-}
+function Pagination() {
+    const [{page}, dispatch] = useAppContext();
+    
+    const handlePrevPageClick = () => {
+        dispatch({type: 'SET_NUMBER', payload: {number: page.number -1} as PageType});
+    }
+    
+    const handleNextPageClick = () => {
+        dispatch({type: 'SET_NUMBER', payload: {number: page.number +1} as PageType});
+    }
 
-function Pagination({ page, onChange }: Props) {
     return (
         <div className="dsmovie-pagination-container">
             <div className="dsmovie-pagination-box">
-                <button onClick={() => onChange(page.number - 1)}
+                <button onClick={handlePrevPageClick}
                     className="dsmovie-pagination-button"
                     disabled={page.first}
                 >
@@ -20,7 +26,7 @@ function Pagination({ page, onChange }: Props) {
 
                 <p>{`${page.number + 1} de ${page.totalPages}`}</p>
 
-                <button onClick={() => onChange(page.number + 1)}
+                <button onClick={handleNextPageClick}
                     className="dsmovie-pagination-button"
                     disabled={page.last}
                 >

@@ -10,6 +10,16 @@
   --title: #4a4a4a;
   --disabled: #c2c2c2;
 }
+[data-theme='dark'] {
+  --background-primary: #052202;
+  --color-primary: #fff;
+
+  --backgound: rgb(0, 27, 3);
+  --color: #b5ff97;
+  --lable: #4a4a4a;
+  --title: #aaa;
+  --disabled: #c2c2c2;
+}
 
 * {
     box-sizing: border-box;
@@ -18,8 +28,12 @@
     padding: 0;
 }
 
+.app {
+  background-color: var(--backgound);
+  height: 100%;
+}
 html, body {
-    background-color: var(--backgound);
+  background-color: var(--backgound);
 }
 
 a, a:hover {

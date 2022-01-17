@@ -1,3 +1,9 @@
+:root {
+    --card-background: #fff;
+}
+[data-theme='dark'] {
+    --card-background: #000;
+}
 .dsmovie-form-container {
     max-width: 480px;
     margin: 40px auto;
@@ -13,6 +19,12 @@
     font-size: 12px;
     color: var(--label);
 }
+.dsmovie-form-group select,
+.dsmovie-form-group input {
+    background-color: var(--background);
+    color: var(--color);
+}
+
 .dsmovie-form-btn-container {
     display: flex;
     justify-content: center;
@@ -22,7 +34,7 @@
     border-radius: 8px 8px 0 0;
 }
 .dsmovie-card-bottom-container {
-    background-color: #fff;
+    background-color: var(--card-background);
     display: flex;
     flex-direction: column;
     align-items: center;
