@@ -1,14 +1,14 @@
 import { ActionType, Movie } from "utils/types";
 
-const default_content:Movie[]      = [];   // Movie[];
-const default_last                 = true; // boolean;
-const default_totalPages           = 0;    // number;
-const default_totalElements        = 0;    // number;
-const default_size                 = 12;   // number;
-const default_number               = 0;    // number;
-const default_first                = true; // boolean;
-const default_numberOfElements     = 0;    // number;
-const default_empty                = true; // boolean;
+const default_content :Movie[]      = [];   // Movie[];
+const default_last                  = true; // boolean;
+const default_totalPages            = 0;    // number;
+const default_totalElements         = 0;    // number;
+const default_size                  = 12;   // number;
+const default_number                = 0;    // number;
+const default_first                 = true; // boolean;
+const default_numberOfElements      = 0;    // number;
+const default_empty                 = true; // boolean;
 
 export type PageType = {
     content             : Movie[];
@@ -42,13 +42,19 @@ export const pageReducer :React.Reducer<PageType, PageActionType> = (state = pag
     switch(type) {
         case 'SET_PAGE':
             return payload!;
+        case 'UPDATE_CONTENT':
+            const movie = payload!.content[0];
+            const i = state.content.findIndex(m=>m.id == movie.id);
+            const newState = state;
+            newState.content[i] = movie;
+            console.log('Reducer.Page.UPDATE_CONTENT', {movie, i, newState} );
+            return state;
         case 'SET_CONTENT':
             return {...state, content: payload!.content};
-        case 'SET_LAST':
-            return {...state, last: payload!.last};
-        case 'SET_NUMBER':
-            return {...state, number: payload!.number};
 
+        case 'SET_NUMBER':
+            return {...state, number: payload!.number, content: []};
+    
         case 'RESET_PAGE': return pageInitialState;
         default: return state;
     }

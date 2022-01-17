@@ -1,8 +1,12 @@
 :root {
     --card-background: #fff;
+    --card-border: transparent;
+    --card-border-update: darkorange;
 }
 [data-theme='dark'] {
     --card-background: #000;
+    --card-border: darkgray;
+    --card-border-update: orange;
 }
 .dsmovie-form-container {
     max-width: 480px;
@@ -32,6 +36,14 @@
 .dsmovie-movie-card-image {
     width: 100%;
     border-radius: 8px 8px 0 0;
+}
+.dsmovie-movie-card {
+    border: 2px solid var(--card-border);
+    border-radius: 8px;
+    transition: border 1s ease;
+}
+.dsmovie-movie-card-border-update {
+    border-color: var(--card-border-update);
 }
 .dsmovie-card-bottom-container {
     background-color: var(--card-background);

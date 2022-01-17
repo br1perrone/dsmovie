@@ -1,14 +1,19 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { useAppContext } from 'contexts/Context';
-import { useState, useEffect } from 'react';
+import { Context } from 'contexts/Context';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { PageType } from 'reducers/PageReducer';
+import { SessionType } from 'reducers/SessionReducer';
+import { UserType } from 'reducers/UserReducer';
 import { api, BASE_URL } from 'utils/constants';
 import { Movie } from 'utils/types';
 import { validateEmail } from 'utils/validators';
 import "./styles.css"
 
 function MovieGreet({ movieId }: { movieId: string }) {
-    const [{user}, dispatch] = useAppContext();
+    const {state, dispatch} = useContext(Context);
+    const {user} = state;
+
     const [email, setEmail] = useState(user.email);
     const [movie, setMovie] = useState<Movie>();
     const navigate = useNavigate();
@@ -16,7 +21,12 @@ function MovieGreet({ movieId }: { movieId: string }) {
     useEffect(() => {
         api.get(`/movies/${movieId}`)
             .then((response) => {
-                setMovie(response.data as Movie)
+                const {data} = response;
+                setMovie(data as Movie);
+                console.log('MovieGreet.useEffect[movieId]', data);
+            })
+            .catch((err)=> {
+                console.error('MovieGreet.useEffect[movieId]', err);
             });
     }, [movieId]);
 
@@ -41,7 +51,12 @@ function MovieGreet({ movieId }: { movieId: string }) {
             }
         }
         axios(config).then((response) => {
-            dispatch({type: 'SET_EMAIL', payload: {email} });
+            const {data} = response;
+            
+            dispatch({type: 'SET_EMAIL', payload: {email} as UserType});
+            dispatch({type: 'SET_UPDATED_MOVIE_ID', payload: {updatedMovieId: movieId} as SessionType});
+            dispatch({type: 'UPDATE_CONTENT', payload: {content: [data]} as PageType});
+            
             goBack();
         }).catch((err)=> {
             console.error("MovieGreet.handleSubmit", err);

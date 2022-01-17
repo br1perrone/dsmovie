@@ -1,11 +1,19 @@
+import { useContext } from "react";
 import { ReactComponent as ArrowSvg } from "assets/svg/arrow.svg";
-import { useAppContext } from "contexts/Context";
+import { Context, useAppContext } from "contexts/Context";
 import { PageType } from "reducers/PageReducer";
 import "./styles.css";
 
-function Pagination() {
-    const [{page}, dispatch] = useAppContext();
-    
+type Props = {
+    page: PageType;
+    dispatch: React.Dispatch<any>;
+}
+
+function Pagination({page, dispatch} :Props) {
+    // const [{page}, dispatch] = useAppContext();
+    // const {state, dispatch} = useContext(Context);
+    // const page = state.page;
+
     const handlePrevPageClick = () => {
         dispatch({type: 'SET_NUMBER', payload: {number: page.number -1} as PageType});
     }

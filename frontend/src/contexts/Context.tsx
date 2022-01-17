@@ -6,7 +6,7 @@ import { ActionType } from "utils/types";
  * @example
 import { elementInitialState, elementReducer, ElementActionType, ElementType } from "reducers/ElementReducer";
  */
-// import { sessionInitialState, sessionReducer, SessionActionType, SessionType } from "reducers/SessionReducer";
+import { sessionInitialState, sessionReducer, SessionActionType, SessionType } from "reducers/SessionReducer";
 import { pageInitialState, pageReducer, PageActionType, PageType } from "reducers/PageReducer";
 import { themeInitialState, themeReducer, ThemeActionType, ThemeType } from "reducers/ThemeReducer";
 import { userInitialState, userReducer, UserActionType, UserType } from "reducers/UserReducer";
@@ -19,7 +19,7 @@ import { navInitialState, navReducer, NavActionType, NavType } from "reducers/Na
     element: ElementType;
  */
 type initialStateType = {
-    // session: SessionType;
+    session: SessionType;
     page: PageType;
     theme: ThemeType;
     user: UserType;
@@ -33,7 +33,7 @@ type initialStateType = {
     ElementActionType |
  */
 type reducerActionType = 
-    // SessionActionType |
+    SessionActionType |
     PageActionType |
     ThemeActionType |
     UserActionType |
@@ -52,7 +52,7 @@ type ContextType = {
     element: elementInitialState,
  */
 const initialState = {
-    // session: sessionInitialState,
+    session: sessionInitialState,
     page: pageInitialState,
     theme: themeInitialState,
     user: userInitialState,
@@ -71,15 +71,17 @@ export const Context = createContext<ContextType>({
     element: elementReducer(state.element, action as ElementActionType),
  */
 const reducer = (state :initialStateType, action :reducerActionType) => ({
-    // session: sessionReducer(state.session, action as SessionActionType),
+    session: sessionReducer(state.session, action as SessionActionType),
     page: pageReducer(state.page, action as PageActionType),
     user: userReducer(state.user, action as UserActionType),
     theme: themeReducer(state.theme, action as ThemeActionType),
     nav: navReducer(state.nav, action as NavActionType),
 });
 
+export const useAppContext = () => (useReducer(reducer, initialState));
+
 export const AppProvider :React.FC = ({children}) => {
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useAppContext();
 
     return (
         <Context.Provider value={{state, dispatch}}>
@@ -87,5 +89,3 @@ export const AppProvider :React.FC = ({children}) => {
         </Context.Provider>
     )
 }
-
-export const useAppContext = () => (useReducer(reducer, initialState));

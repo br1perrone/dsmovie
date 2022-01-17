@@ -1,0 +1,10 @@
+{
+    "name": "DSMovie 🐱/br1perrone",
+    "short_name": "DSMovie",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#052202",
+    "theme_color": "#052202",
+    "lang": "pt-BR",
+    "description": "Projeto desenvolvido durante a Semana Sprint React da DevSuperior, de 10 a 16 de Janeiro de 2022."
+}

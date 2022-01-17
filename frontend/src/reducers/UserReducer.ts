@@ -18,6 +18,7 @@ export const userInitialState :UserType = {
 }
 
 export const userReducer :React.Reducer<UserType, UserActionType> = (state = userInitialState, {type = 'RESET_USER', payload} :UserActionType) :UserType => {
+    console.info('Reducer', {state, type, payload});
     switch(type) {
         case 'SET_EMAIL':
             return {...state, email: payload!.email};

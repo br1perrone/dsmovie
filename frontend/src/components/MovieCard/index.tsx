@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { Movie } from "utils/types";
 import "./styles.css";
 
-function MovieCard({movie}: {movie: Movie}) {
+function MovieCard({movie, border}: {movie: Movie, border?: string}) {
     return (
-        <div>
+        <div className={"dsmovie-movie-card dsmovie-movie-card-border-" + border}>
             <img className="dsmovie-movie-card-image" src={movie.image} alt={movie.title} />
             <div className="dsmovie-card-bottom-container">
                 <h3>{movie.title}</h3>

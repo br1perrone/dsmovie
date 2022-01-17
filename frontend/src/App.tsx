@@ -3,21 +3,23 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import "./App.css";
 
 import List from "pages/List";
 import Movie from "pages/Movie";
 
 import Navbar from "components/Navbar";
-import { useAppContext } from "contexts/Context";
+import { Context} from "contexts/Context";
+import { useContext } from "react";
 
 function App() {
-  const [{theme}] = useAppContext();
+  const {state} = useContext(Context)
+  const theme = state.theme;
 
   return (
     <div className="app" data-theme={theme.mode}>
       <BrowserRouter>
         <Navbar />
-        {theme.mode}
         <Routes>
           <Route path="/" element={ <List />}/>
           <Route path="/movie">

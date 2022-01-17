@@ -4,7 +4,7 @@
   --background-primary: #255a1f;
   --color-primary: #fff;
 
-  --backgound: #e8e8e8;
+  --background: #e8e8e8;
   --color: #000;
   --label: #aaa;
   --title: #4a4a4a;
@@ -14,7 +14,7 @@
   --background-primary: #052202;
   --color-primary: #fff;
 
-  --backgound: rgb(0, 27, 3);
+  --background: #001b03;
   --color: #b5ff97;
   --lable: #4a4a4a;
   --title: #aaa;
@@ -26,14 +26,6 @@
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
-}
-
-.app {
-  background-color: var(--backgound);
-  height: 100%;
-}
-html, body {
-  background-color: var(--backgound);
 }
 
 a, a:hover {

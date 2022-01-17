@@ -1,52 +1,50 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import "./styles.css"
 
 import Pagination from 'components/Pagination';
 import MovieCard from 'components/MovieCard';
 import { api } from 'utils/constants';
-import { Movie, SortMovie } from 'utils/types';
-import { useAppContext } from 'contexts/Context';
+import { Movie } from 'utils/types';
+import { Context } from 'contexts/Context';
 import { PageType } from 'reducers/PageReducer';
+import { SessionType } from 'reducers/SessionReducer';
+
+let timer :NodeJS.Timeout;
 
 function List() {
-    const [session, dispatch] = useAppContext()
-
-    const [pageNumber, setPageNumber] = useState(session.page.number);
-    const [sort] = useState<SortMovie>('id');
-    //const [sort, setSort] = useState<SortMovie>('id');
-    const [size] = useState(12);
-    //const [size, setSize] = useState(12);
-    const [page, setPage] = useState<PageType>(session.page);
+    const {state, dispatch} = useContext(Context);
+    const {page, session} = state;
 
     useEffect(() => {
-        api.get(`/movies?size=${size}&page=${pageNumber}&sort=${sort}`)
+        api.get(`/movies?size=${session.size}&page=${page.number}&sort=${session.sort}`)
             .then(response => {
                 const data = response.data as PageType;
-                setPage(data);
-                console.log('List.useEffect[pageNumber]', data);
+                dispatch({type: 'SET_PAGE', payload: data as PageType});
+                console.log('List.useEffect[page.number]', {data, page, session});
             })
             .catch((err)=>{
-                console.error('List.useEffect[pageNumber]', err);
+                console.error('List.useEffect[page.number]', err);
             });
-    }, [
-        size, sort,
-        pageNumber
-    ]);
+    }, [page.number, session.sort, session.size]);
 
     useEffect(()=>{
-        console.log('List.useEffect[page]', page);
-        dispatch({type: 'SET_PAGE', payload: page as PageType});
-    }, [page, dispatch]);
+        timer = setTimeout(()=>{
+            dispatch({type: 'SET_UPDATED_MOVIE_ID', payload: {updatedMovieId: undefined} as SessionType});
+            clearTimeout(timer);
+        }, 3000);
+    }, [session.updatedMovieId]);
 
     return (
         <>
-            <Pagination />
+            <Pagination page={state.page} dispatch={dispatch}/>
 
             <div className="container">
                 <div className="row">
-                    {page?.content?.map((movie: Movie) =>
+                    {state.page?.content?.map((movie: Movie) =>
                         <div key={movie.id} className="col-sm-6 col-lg-4 col-xl-3 mb-4">
-                            <MovieCard movie={movie} />
+                            <MovieCard movie={movie} border={
+                                parseInt(session.updatedMovieId || "0") == movie.id ? "update" : ""
+                            } />
                         </div>
                     )}
                 </div>
