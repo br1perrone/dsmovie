@@ -56,6 +56,7 @@ function MovieGreet({ movieId }: { movieId: string }) {
             dispatch({type: 'SET_EMAIL', payload: {email} as UserType});
             dispatch({type: 'SET_UPDATED_MOVIE_ID', payload: {updatedMovieId: movieId} as SessionType});
             dispatch({type: 'UPDATE_CONTENT', payload: {content: [data]} as PageType});
+            dispatch({type: 'SAVE_USER'});
             
             goBack();
         }).catch((err)=> {

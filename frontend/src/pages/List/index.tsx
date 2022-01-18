@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import "./styles.css"
 
 import Pagination from 'components/Pagination';
@@ -28,11 +28,13 @@ function List() {
     }, [page.number, session.sort, session.size]);
 
     useEffect(()=>{
-        timer = setTimeout(()=>{
-            dispatch({type: 'SET_UPDATED_MOVIE_ID', payload: {updatedMovieId: undefined} as SessionType});
-            clearTimeout(timer);
-        }, 3000);
-    }, [session.updatedMovieId]);
+        if(session.updatedMovieId) {
+            timer = setTimeout(()=>{
+                dispatch({type: 'SET_UPDATED_MOVIE_ID', payload: {updatedMovieId: undefined} as SessionType});
+                clearTimeout(timer);
+            }, 3000);
+        }
+    }, []);
 
     return (
         <>
@@ -43,7 +45,8 @@ function List() {
                     {state.page?.content?.map((movie: Movie) =>
                         <div key={movie.id} className="col-sm-6 col-lg-4 col-xl-3 mb-4">
                             <MovieCard movie={movie} border={
-                                parseInt(session.updatedMovieId || "0") == movie.id ? "update" : ""
+                                parseInt(session.updatedMovieId || "0") === movie.id ?
+                                "update" : ""
                             } />
                         </div>
                     )}

@@ -1,7 +1,8 @@
 import { ActionType } from "utils/types";
 
-let default_state = localStorage.getItem('user') || '{}';
-const user_json = JSON.parse(default_state);
+let local_user = localStorage.getItem('user');
+local_user = (local_user === undefined) ? '{}' : local_user;
+const user_json = JSON.parse(local_user!);
 
 const default_email = '';
 
@@ -24,7 +25,7 @@ export const userReducer :React.Reducer<UserType, UserActionType> = (state = use
             return {...state, email: payload!.email};
 
         case 'SAVE_USER':
-            localStorage.setItem('user', JSON.stringify(payload));
+            localStorage.setItem('user', JSON.stringify(state));
             return state;
         case 'RELOAD_USER':
             {
