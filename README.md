@@ -8,24 +8,28 @@ Troquei a rota individual de cada filme de ``/form/1`` para ``/movie/1``
 
 ## v2
 
-### Telas
+### Imagens
 
-Light | Dark
----|---
-![](https://github.com/br1perrone/dsmovie/v2/images/v2_20220118_203005.png)|![](https://github.com/br1perrone/dsmovie/v2/images/v2_20220118_203452.png)
----|---
+---
 Tela de Listagem com Switch para seleção de tema
----|---
-![](https://github.com/br1perrone/dsmovie/v2/images/v2_20220118_203041.png)|![](https://github.com/br1perrone/dsmovie/v2/images/v2_20220118_203452.png)
----|---
-Tela de Avaliação
----|---
-![](https://github.com/br1perrone/dsmovie/v2/images/v2_20220118_203105.png)|![](https://github.com/br1perrone/dsmovie/v2/images/v2_20220118_2035423.png)
----|---
-Retorno da Avaliação para a tela de Listagem com destaque no filme avaliado e retornando para a página do mesmo
+---
+<img src="https://github.com/br1perrone/dsmovie/blob/v2/images/v2_20220118_203005.png" width="50%" />&nbsp;&nbsp;&nbsp;<img src="https://github.com/br1perrone/dsmovie/blob/v2/images/v2_20220118_203452.png" width="50%" />
 ---
 
-``imagens capturadas em 18/01/2022``
+---
+Tela de Avaliação
+---
+<img src="https://github.com/br1perrone/dsmovie/blob/v2/images/v2_20220118_203041.png" width="50%" />&nbsp;&nbsp;&nbsp;<img src="https://github.com/br1perrone/dsmovie/blob/v2/images/v2_20220118_2035405.png" width="50%" />
+---
+
+---
+Retorno da Avaliação para a tela de Listagem com destaque no filme avaliado e retornando para a página do mesmo
+---
+<img src="https://github.com/br1perrone/dsmovie/blob/v2/images/v2_20220118_203105.png" width="50%" />&nbsp;&nbsp;&nbsp;<img src="https://github.com/br1perrone/dsmovie/blob/v2/images/v2_20220118_2035423.png" width="50%" />
+---
+
+*imagens capturadas em 18/01/2022
+
 
 ### Ideias & Planejamentos
 
@@ -93,7 +97,7 @@ Retorno da Avaliação para a tela de Listagem com destaque no filme avaliado e 
         - [x] para guardar ordem dos itens
         - [x] guardar id do filme que foi avaliado
     - [ ] reducer notifications
-        - [ ] mensgems que virão do back-end ou da UI/UX que serão apresentadas para o usuário
+        - [ ] mensgens que virão do back-end ou da UI que serão apresentadas para o usuário
 - [x] aplicar theme
     - [x] criar :root css para dark-mode
 - [x] ajustar voltar da avaliação do filme para a página de origem
