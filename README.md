@@ -10,19 +10,20 @@ Troquei a rota individual de cada filme de ``/form/1`` para ``/movie/1``
 
 ### Telas
 
-<img width="33%" alt="V2 - tela de Listagem" src="v2_20220118_203005.png" />
-:---:Tela de Listagem (Light Mode) com Switch para seleção de tema
-<img width="33%" alt="V2 - tela de Avaliação" src="v2_20220118_203041.png" />
-:---:Tela de Avaliação (Light Mode)
-<img width="33%" alt="V2 - retorno da Avaliação para a tela de Listagem" src="v2_20220118_203105.png" />
-:---:Retorno da Avaliação para a tela de Listagem (Light Mode) com destaque no filme avaliado e retornando para a página do mesmo
-
-<img width="33%" alt="V2 - dark mode - tela de Listagem" src="v2_20220118_203452.png" />
-:---:Tela de Listagem (Dark Mode) com Switch para seleção de tema
-<img width="33%" alt="V2 - dark mode - tela de Avaliação" src="v2_20220118_2035405.png" />
-:---:Retorno da Avaliação para a tela de Listagem (Dark Mode) com destaque no filme avaliado e retornando para a página do mesmo
-<img width="33%" alt="V2 - dark mode - retorno da Avaliação para a tela de Listagem" src="v2_20220118_2035423.png" />
-:---:Retorno da Avaliação para a tela de Listagem (Dark Mode) com destaque no filme avaliado e retornando para a página do mesmo
+Light | Dark
+---|---
+![](https://github.com/br1perrone/dsmovie/v2/images/v2_20220118_203005.png)|![](https://github.com/br1perrone/dsmovie/v2/images/v2_20220118_203452.png)
+---|---
+Tela de Listagem com Switch para seleção de tema
+---|---
+![](https://github.com/br1perrone/dsmovie/v2/images/v2_20220118_203041.png)|![](https://github.com/br1perrone/dsmovie/v2/images/v2_20220118_203452.png)
+---|---
+Tela de Avaliação
+---|---
+![](https://github.com/br1perrone/dsmovie/v2/images/v2_20220118_203105.png)|![](https://github.com/br1perrone/dsmovie/v2/images/v2_20220118_2035423.png)
+---|---
+Retorno da Avaliação para a tela de Listagem com destaque no filme avaliado e retornando para a página do mesmo
+---
 
 ``imagens capturadas em 18/01/2022``
 
